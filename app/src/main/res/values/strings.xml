@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DanMartinInterview</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="image_slide_shared_name">Image Slide</string>
+    <string name="flickr_url">http://api.flickr.com/services/feeds/photos_public.gne?tags=boston&amp;format=json</string>
+    <string name="load_error">Error loading data. Please try again later.</string>
+</resources>
