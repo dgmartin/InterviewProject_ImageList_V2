@@ -1,18 +1,15 @@
-package com.android.danmartin.danmartininterview.main.views;
+package com.android.danmartin.danmartininterview2.main.views;
 
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.danmartin.danmartininterview.R;
-import com.android.danmartin.danmartininterview.main.model.FlickrObject;
-import com.android.danmartin.danmartininterview.main.network.FlickrListRequest;
-import com.android.danmartin.danmartininterview.main.network.VolleyUtils;
-import com.android.volley.VolleyError;
+import com.android.danmartin.danmartininterview2.R;
+import com.android.danmartin.danmartininterview2.main.model.FlickrObject;
+import com.android.danmartin.danmartininterview2.main.network.VolleyUtils;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
@@ -20,31 +17,27 @@ import com.android.volley.toolbox.NetworkImageView;
  * Created by Dan on 4/11/2015.
  */
 public class ImageListView extends RelativeLayout {
+    public static final int LAYOUT_LIST = 0;
+    public static final int LAYOUT_GRID = 1;
+
     private FlickrObject mData = null;
 
     public ImageListView(Context context) {
         super(context);
-        setUpUI(context);
     }
 
     public ImageListView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setUpUI(context);
     }
 
     public ImageListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setUpUI(context);
     }
 
-    public ImageListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        setUpUI(context);
-    }
-
-    protected void setUpUI(Context context) {
+    public void setLayout(Context context, int layout) {
+        int layoutRes = layout == LAYOUT_LIST ? R.layout.view_image_list : R.layout.view_grid_image_list;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.view_image_list, this, true);
+        inflater.inflate(layoutRes, this, true);
         setBackgroundResource(R.color.image_listview_bg);
     }
 

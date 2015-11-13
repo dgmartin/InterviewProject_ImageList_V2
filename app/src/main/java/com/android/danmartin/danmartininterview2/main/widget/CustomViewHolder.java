@@ -1,4 +1,4 @@
-package com.android.danmartin.danmartininterview.main.widget;
+package com.android.danmartin.danmartininterview2.main.widget;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.android.danmartin.danmartininterview.main.network;
+package com.android.danmartin.danmartininterview2.main.network;
 
 import android.content.Context;
 import android.graphics.Bitmap;

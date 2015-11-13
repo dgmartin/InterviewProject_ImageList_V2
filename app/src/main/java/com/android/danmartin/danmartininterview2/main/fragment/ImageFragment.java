@@ -1,4 +1,4 @@
-package com.android.danmartin.danmartininterview.main.fragment;
+package com.android.danmartin.danmartininterview2.main.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.danmartin.danmartininterview.R;
-import com.android.danmartin.danmartininterview.main.model.FlickrObject;
-import com.android.danmartin.danmartininterview.main.network.VolleyUtils;
+import com.android.danmartin.danmartininterview2.R;
+import com.android.danmartin.danmartininterview2.main.model.FlickrObject;
+import com.android.danmartin.danmartininterview2.main.network.VolleyUtils;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
@@ -42,10 +42,17 @@ public class ImageFragment extends Fragment implements Response.Listener<Bitmap>
             FlickrObject data = (FlickrObject) getArguments().getSerializable(FLICKR_OBJECT);
             String imageUrl = data.getMedia();
 
+            //Because of the way the api works we swap the "m" to "h"
+            // to get a larger image for displaying full screen. This is probably not the best way to handle this but
+            // I felt this was fine for this project.
+            imageUrl=imageUrl.replace("_m.jpg","_h.jpg");
+
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 view.findViewById(R.id.image).setTransitionName(data.getMedia());
             }
 
+//          Normally I would use a standard NetworkImageView here but because I am using the pallette feature this
+//          method allows me to grab the bitmap before it goes into the ImageView
             ImageRequest request = new ImageRequest(imageUrl, this, 0, 0, null, this);
             VolleyUtils.getSharedInstance(getActivity()).addToRequestQueue(request);
         }

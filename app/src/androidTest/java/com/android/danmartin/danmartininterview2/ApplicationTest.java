@@ -1,4 +1,4 @@
-package com.android.danmartin.danmartininterview;
+package com.android.danmartin.danmartininterview2;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

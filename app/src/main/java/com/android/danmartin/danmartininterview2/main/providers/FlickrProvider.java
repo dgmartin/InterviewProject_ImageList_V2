@@ -1,10 +1,10 @@
-package com.android.danmartin.danmartininterview.main.providers;
+package com.android.danmartin.danmartininterview2.main.providers;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.android.danmartin.danmartininterview.main.model.FlickrObject;
-import com.android.danmartin.danmartininterview.main.network.FlickrListRequest;
+import com.android.danmartin.danmartininterview2.main.model.FlickrObject;
+import com.android.danmartin.danmartininterview2.main.network.FlickrListRequest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,7 +22,7 @@ public class FlickrProvider implements FlickrListRequest.FlickrListRequestListen
     private Context mContext;
     private static final String DATA_CACHE = "Data_Cache.dmi";
     private ArrayList<FlickrObject> mData = new ArrayList<>();
-//    Normally a single listener will do but I find with photo galleries there is always a list view
+    //    Normally a single listener will do but I find with photo galleries there is always a list view
 //    and a paging image view so I left a place for multiple listeners if needed.
     private ArrayList<FlickrProviderListener> mListeners = new ArrayList<>();
 
@@ -36,7 +36,7 @@ public class FlickrProvider implements FlickrListRequest.FlickrListRequestListen
         return mSharedInstance;
     }
 
-    public void requestData(Context context) {
+    public void requestData(Context context, String tags) {
         mContext = context.getApplicationContext();
 
 //      The first time data is requested during a session we check to see if there is cached data
@@ -44,7 +44,7 @@ public class FlickrProvider implements FlickrListRequest.FlickrListRequestListen
         if (mData == null || mData.isEmpty()) {
             new InflateDataTask().execute();
         } else {
-            new FlickrListRequest().requestNewData(context, this);
+            new FlickrListRequest().requestNewData(context, tags, this);
         }
     }
 

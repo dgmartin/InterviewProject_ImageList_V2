@@ -1,6 +1,4 @@
-package com.android.danmartin.danmartininterview.main.model;
-
-import android.text.TextUtils;
+package com.android.danmartin.danmartininterview2.main.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;

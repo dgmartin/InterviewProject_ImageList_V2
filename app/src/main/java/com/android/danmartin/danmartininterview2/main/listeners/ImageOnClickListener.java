@@ -1,15 +1,15 @@
-package com.android.danmartin.danmartininterview.main.listeners;
+package com.android.danmartin.danmartininterview2.main.listeners;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
-import com.android.danmartin.danmartininterview.R;
-import com.android.danmartin.danmartininterview.main.activities.MainActivity;
-import com.android.danmartin.danmartininterview.main.fragment.ImageFragment;
-import com.android.danmartin.danmartininterview.main.model.FlickrObject;
-import com.android.danmartin.danmartininterview.main.views.ImageListView;
+import com.android.danmartin.danmartininterview2.R;
+import com.android.danmartin.danmartininterview2.main.activities.MainActivity;
+import com.android.danmartin.danmartininterview2.main.fragment.ImageFragment;
+import com.android.danmartin.danmartininterview2.main.model.FlickrObject;
+import com.android.danmartin.danmartininterview2.main.views.ImageListView;
 
 /**
  * Created by Dan on 4/11/2015.

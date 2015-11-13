@@ -1,10 +1,10 @@
-package com.android.danmartin.danmartininterview.main.activities;
+package com.android.danmartin.danmartininterview2.main.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
-import com.android.danmartin.danmartininterview.R;
-import com.android.danmartin.danmartininterview.main.network.VolleyUtils;
+import com.android.danmartin.danmartininterview2.R;
+import com.android.danmartin.danmartininterview2.main.network.VolleyUtils;
 import com.android.volley.RequestQueue;
 
 
