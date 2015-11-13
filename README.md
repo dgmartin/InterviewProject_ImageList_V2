@@ -1,19 +1,33 @@
-# InterviewProject_ImageList
+# InterviewProject_ImageList_V2
 
-This project was originally done for a job interview. I was given the following requirments:
+**PLEASE NOTE:** This project originated as a direct copy of the project here: [Interview_Project_Imagelist]. This project is an update to the original project so it is important to understand the original goal before looking at the changes that where made. It is highly recommended that you view the ReadMe file for InterviewProject_ImageList before reading further.
 
-> Please send us a sample project that displays a scrolling list of images populated from: http://api.flickr.com/services/feeds/photos_public.gne?tags=boston&amp;format=json
+For this project I was given the following task:
+>Flickr has a great public api for photo feeds available.
+>All the documentation is at: www.flickr.com/services/feeds/docs/photos_public/.
 
-> This project should keep a local cache of the images in device storage so that they are available in future launches of the application without needing to be downloaded again. The application should asynchronously load the photos from the web if they are not in the cache, add them to the cache, and display them when they become available.
- 
-> Please take about 1 day to complete this project, and send back a zipped up project file, so we can run in and assess.
+>Please build an Android app that:
 
-With my submission I added the following comments:
+>- Loads the public photos feed.
+>- Displays the photos in a grid layout
+>- Allows you to type a “Tag” into a search field to show a new feed of tagged photos
 
-- I forgot to ask if this was handset or tablet.  I assumed handset so that is what I designed for. The majority of my apps also call for locked portrait rotation so I didn't think until last minute to design for rotation changes. I've allowed the app to rotate by default but you will may notice design flaws when going to landscape.  you will also return to the top of the list after rotating. If this is something you would want corrected let me know and I can get those to you.
-- I used the volley library as it is becoming the standard for network requests on android. It caches all images by default. All I had to manually cache was the response data with the image links. Keep in mind I'm using the default volley caching configuration which is typically based on the data the server provides on length of validity. In other words it's caching the image until the server says they are old.
-- I was planning on using a Flickr library however the one that Flickr recommends seems out dated.  I found it just as convenient to use the JSON request with volley to parse the data I needed.
-- I used the JSON response instead of the XML. In doing this I found a major bug on the Flickr site.  The call is not returning valid JSON. I was able to circumvent this with my code however you will find extra code in the "FlickrListRequest.java" file. I left this code so that in the event Flickr fixes the bug it will be easy to swap back to the correct code.
-- I decided to leave the error logs for testing purposes but would normally comment them out, wrap in a if statement with a debug flag, or remove them all together.
+>Build it however you’d like but try not to spend more than 4­5 hours.
+>Try to make it easy for us to import it into Android Studio
 
-I am sharing this on github for any others that would like to see a sample of my current coding style.
+From the original code the first step of loading a public feed was completed. I then needed to update the code to display the content in a grid as well as allow the users to enter a custom tag. 
+
+To get the code to display in a grid view I updated the ImageListView to set the prefered layout via the constructor. I choose to do it this way in the event I ever need to go back to the original linear layout. Once this was complete it was simply a matter of using a GridLayoutManager in the place of the current LinearLayoutManager for the RecyclerView.
+
+For the custom tag requirement I added an EditText and clear button to the main layout. I then connected a TextWatcher to the EditText so that as the user types in a tag the list is automatically updated. Hitting the clear button resets the EditText and the list data to use the default empty string (""). I then updated the request call to take in a users tag instead of just defaulting to "boston" like the original code required. There is a section in the code that can be used for validating the string (marked with a TODO) however I decided not to add any validation for the moment. In addition I have the tags being saved to the shared preferences so that when the app is shutdown and restarted the same tags are entered as when the user left.
+
+**Other Notes and Changes**
+- I changed the package name from the original code as these should now be considered two different projects.
+- In the original code I omitted an placeholder image if they images failed to load. This is still true however I noticed more and more there are images that fail to load via Flickr. This holds true even on a browser confirming it is not my code. Please be aware that if you click on an image and it does not load right away it is most likely a broken link. I will try and updated this in the next day or so.
+- While I don't agree with the method flickr's method of retriving image sizes is to trail the filename with a letter indicating which size to return (You can read about it here: [Flickr Services]), I have added a string replace on the image url to increase the resolution when viewing a photo in full screen. Currently this only applies to jpg files.
+- My normal testing device (my personal phone) died on me two days ago so almost all testing was done on the Genymotion emulator.
+- While my time on this project was broken up throughout the day I would say total time working on this was about 3.5 hours to comply with the basic tasks and another hour that I spent making smaller updates. This total does not include the time it took me to copy the original code to a new repository (which is much more time consuming than you would think) or the time to update this ReadMe file.
+
+
+ [Interview_Project_Imagelist]: <https://github.com/dgmartin/InterviewProject_ImageList>
+ [Flickr Services]: <https://www.flickr.com/services/api/misc.urls.html>
